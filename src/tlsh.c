@@ -67,3 +67,25 @@ const char* tlsh_get_hash(Tlsh* tlsh, bool showvers)
     else
         return "";
 }
+
+int tlsh_compare(Tlsh *t1, Tlsh*t2)
+{
+  if (t1->impl == NULL || t2->impl == NULL)
+    return -1;
+
+  return tlsh_impl_total_diff(t1->impl, t2->impl, true);
+}
+
+bool tlsh_is_valid(Tlsh *tlsh)
+{
+  if (tlsh->impl == NULL)
+    return false;
+  return tlsh_impl_is_valid(tlsh->impl);
+}
+
+bool tlsh_from_hash(Tlsh *tlsh, const char hash[TLSH_STRING_BUFFER_LEN])
+{
+  if (tlsh->impl == NULL)
+    return false;
+  return tlsh_impl_from_tlsh_str(tlsh->impl, hash) == 0;
+}

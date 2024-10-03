@@ -10,7 +10,7 @@ add_library(tlshc STATIC
         src/tlsh.c
 )
 
-target_compile_options(tlshc PRIVATE -Wall -fpie)
+add_compile_options(tlshc PRIVATE -Wall -fpie)
 target_compile_features(tlshc PRIVATE c_std_11)
 
 # TLSH uses only half the counting buckets.

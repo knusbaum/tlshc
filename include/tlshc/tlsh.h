@@ -56,6 +56,9 @@ void tlsh_reset(Tlsh* tlsh);
 int tlsh_update(Tlsh* tlsh, const unsigned char* data, unsigned int len);
 int tlsh_final(Tlsh* tlsh, const unsigned char* data, unsigned int len, int tlsh_option);
 const char* tlsh_get_hash(Tlsh* tlsh, bool showvers);
+int tlsh_compare(Tlsh *t1, Tlsh*t2);
+bool tlsh_is_valid(Tlsh *tlsh);
+bool tlsh_from_hash(Tlsh *tlsh, const char hash[TLSH_STRING_BUFFER_LEN]);
 
 #ifdef __cplusplus
 }
